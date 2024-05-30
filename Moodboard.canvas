@@ -1,0 +1,35 @@
+{
+	"nodes":[
+		{"type":"text","text":"","id":"c00c7ecc179b7517","x":-395,"y":-303,"width":250,"height":60},
+		{"type":"file","file":"Ressourcen/Pictures/cbhiq9cp.bmp","id":"4aa18ac57cdef776","x":-395,"y":-620,"width":400,"height":259},
+		{"type":"file","file":"Ressourcen/Pictures/em173h49.bmp","id":"869eb307ed2689e0","x":60,"y":-620,"width":400,"height":282},
+		{"type":"file","file":"Ressourcen/Pictures/ir2vdqiv.bmp","id":"f3bc0cd21f6a302c","x":60,"y":-280,"width":0,"height":0},
+		{"type":"file","file":"Ressourcen/Pictures/82atm46n.bmp","id":"470642e4bb22e86a","x":520,"y":-620,"width":400,"height":210},
+		{"type":"file","file":"Ressourcen/Pictures/txhsz24a.bmp","id":"494661ad78e86cc6","x":520,"y":-361,"width":300,"height":400},
+		{"type":"file","file":"Ressourcen/Pictures/pnrt9kp3.bmp","id":"f7d5606c78472478","x":880,"y":-361,"width":400,"height":267},
+		{"type":"file","file":"Ressourcen/Pictures/blocks.png","id":"9333df1dfb4c6ab7","x":-395,"y":-303,"width":400,"height":242},
+		{"type":"file","file":"Ressourcen/Pictures/dgws6qho.bmp","id":"7a7a8e17e224852f","x":60,"y":39,"width":400,"height":309},
+		{"type":"file","file":"Ressourcen/Pictures/yj8ruld6.bmp","id":"ba75d35ba89ab66e","x":520,"y":100,"width":400,"height":400},
+		{"type":"file","file":"Ressourcen/Pictures/oe8sxfp5.bmp","id":"9b61747a3bf7f53b","x":-395,"y":39,"width":400,"height":344},
+		{"type":"text","text":"Markov Chain WFC","id":"32caa632fb0218bd","x":-395,"y":-20,"width":250,"height":54,"color":"6"},
+		{"type":"text","text":"Tilesets for 3D WFC","id":"8bb6ea0fbb6334dd","x":-395,"y":-680,"width":250,"height":54,"color":"6"},
+		{"type":"text","text":"Game Implementation 3D WFC","id":"77a9de36a5f2ace6","x":520,"y":-680,"width":300,"height":54,"color":"6"},
+		{"type":"text","text":"GridProblem","id":"b7407ff574e2b9e8","x":-400,"y":460,"width":250,"height":60},
+		{"type":"text","text":"Citys are not build on Grids","id":"7d93fe54c0860468","x":-400,"y":540,"width":250,"height":60},
+		{"type":"file","file":"Ressourcen/Pictures/Stuttgart 2.png","id":"06db4528d5837848","x":-400,"y":680,"width":400,"height":198},
+		{"type":"file","file":"Ressourcen/Pictures/Stuttgart 1.png","id":"67452ac1f9a6dc90","x":40,"y":680,"width":400,"height":196},
+		{"type":"file","file":"Ressourcen/Pictures/Hannover 1.png","id":"69c3468f88824475","x":-400,"y":920,"width":399,"height":198},
+		{"type":"file","file":"Ressourcen/Pictures/Dorf 1 Schadleben.png","id":"70776d8f6308d066","x":40,"y":920,"width":399,"height":181},
+		{"type":"text","text":"How to create Organic Grids?","id":"d87e7c941bb7b778","x":-400,"y":1160,"width":340,"height":60},
+		{"type":"link","url":"https://twitter.com/i/status/1147881669350891521","id":"6b2c3e3c506c332b","x":-400,"y":1260,"width":508,"height":820},
+		{"type":"link","url":"https://video.twimg.com/tweet_video/D-4XddXXoAAX-CX.mp4","id":"b047c2feeddf107b","x":140,"y":1260,"width":420,"height":410},
+		{"type":"text","text":"Tileset Inspo","id":"12a14b6a1b8badf1","x":1380,"y":-680,"width":300,"height":54,"color":"6"},
+		{"id":"87427624b72f86dc","type":"file","file":"Ressourcen/Pictures/Tiles.png","x":1380,"y":-581,"width":399,"height":243},
+		{"id":"49a6fcf872e948dc","type":"file","file":"Ressourcen/Pictures/BlIiNv.png","x":1820,"y":-581,"width":400,"height":225}
+	],
+	"edges":[
+		{"id":"9128b8341db2c511","fromNode":"7d93fe54c0860468","fromSide":"right","toNode":"67452ac1f9a6dc90","toSide":"top"},
+		{"id":"4f4349b448a41527","fromNode":"7d93fe54c0860468","fromSide":"right","toNode":"06db4528d5837848","toSide":"top"},
+		{"id":"f1d0a2e2a4174280","fromNode":"d87e7c941bb7b778","fromSide":"right","toNode":"b047c2feeddf107b","toSide":"top"}
+	]
+}

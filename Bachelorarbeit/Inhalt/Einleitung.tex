@@ -1,0 +1,64 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root =  ../Bachelorarbeit.tex
+
+\chapter{Introduction}
+\label{cha:Introduction}
+
+Procedural Content Generation (\FachbegriffSpezialA{PCG}{procedural content generation}{»short for procedural content generation. a method of creating data algorithmically, typically through a combination of human-generated content and algorithms coupled with computer-generated randomness and processing power.« \Zitat[see (5)]{Wikipedia:PCG}}{PCG}) refers to the automatic creation of content through algorithms rather than manual labor. This technique allows for expansive, varied and unique creations, like characters, game environments and quests. 
+The history of PCG dates back to the early 1980 where it was used in the dungeon crawler \href{https://en.wikipedia.org/wiki/Rogue_(video_game)}{"Rogue"} that used algorithms that create random dungeon layouts for each play through. This was better for replayability, but mainly saved disk space in a time when it was scarce. The concept of PCG was further explored in games like \href{https://en.wikipedia.org/wiki/Elite_(video_game)}{"Elite" (1984)}, which generated an entire galaxy with limited computational resources.
+After disk space got larger, PCG saw a resurgence with popular games like \href{https://en.wikipedia.org/wiki/Minecraft_(video_game)}{"Minecraft" (2011)} where every playable world is unique, and each terrain feature is procedurally generated. Similarly, \href{https://en.wikipedia.org/wiki/Bad_North}{"Bad North" (2018)} uses PCG to generate islands with unique structures, providing new tactical challenges. PCG can create expansive worlds and varied content dynamically, keeping players engaged with new discoveries each time they play. As a result, PCG has become a cornerstone in both indie and mainstream game development, contributing to the success and longevity of titles like \href{https://en.wikipedia.org/wiki/No_Mans_Sky}{"No Man's Sky" (2023 updated)} and \href{https://en.wikipedia.org/wiki/Hades_(video_game)}{"Hades" (2020)}.
+
+This thesis looks at procedurally generating cities. Most procedural city generators are designed for use in the game industry, with a focus on visual realism rather than the complexities of real-world urban environments. The outputs of these generators often prioritize aesthetic qualities for gaming experiences and may lack the plausibility required for scientific research or urban planning applications. Researchers identify a lack of standardization and interoperability among existing city PCG tools. \footnote{\Zitat[p. 35]{kim_procedural_2018}{Procedural city generation beyond game development}} While some solutions offer comprehensive content generation capabilities, others specialize in specific features like terrain, buildings, or road networks. This fragmentation hinders the development of unified workflows. To counteract this, a new approach for procedurally generating cities, based on Wave Function Collapse (\FachbegriffSpezialA{WFC}{wave function collapse}{»short for wave function collapse. A special algorithm to solve problems by reducing a set of various states to a single state« \Zitat[see (7)]{Wikipedia:WFC}}{WFC}), is tested. 
+
+Wave Function Collapse is an important PCG algorithm which focuses on replicating patterns based on a rule- or tile-set. This technique has garnered significant attention for its ability to generate intricate and visually appealing content with minimal manual intervention. Despite its strengths, traditional WFC operates primarily on grid-based structures, limiting its applicability in scenarios requiring more flexible and irregular content generation. With cities not being based on grids. The traditional WFC algorithm has to be adapted to be applied to organic shapes, to create more realistic results.
+
+- Bilder der organic grids und später entstehenden städte hier einfügen
+
+\section{Aim of Work}
+\label{sec:AimOfWork}
+
+This thesis aims to create a proof-of-concept application that procedurally generates cities in an abstracted form as cubes on a vertex graph. For this, the Wave Function Collapse algorithm is used and extended to work with 3D Objects on \FachbegriffSpezialA{irregular quadrilateral grids}{}{»An object that contains only quads but resembles an organic shape«}{irregular quadrilateral grids}. This extended Model takes a ruleset based on a few float parameters as input. The parameters drive the size, river generation, road generation and city density. To generate more realistic cities, the algorithm is layered with layers for road, river, city and environment generation. This prevents the algorithm from creating cities without any structure, for example unconnected roads or cities without houses. 
+
+\begin{figure}[htbp]
+  \centering
+  \includesvg[width=\linewidth]{BA WFC Expl.drawio.svg}
+  \caption{WFC Functionality}
+\end{figure}
+
+
+\section{Related Work}
+\label{sec:RelatedWork}
+
+\section{Work Environment}
+\label{sec:Work Environment}
+
+Die Entwicklung der Software geschah in Kooperation mit der Mantelgesellschaft des Radiosenders: Der Musterfabrik GmbH \& Co. Betriebs KG.
+
+Als Entwicklungsbasis kamen die neu eingef\"uhrten Frameworks Extbase und Fluid zum Einsatz, welche derzeit noch in Entwicklung sind und deshalb nur in fr\"uhen Versionen vorliegen. Die grundlegenden Technologien, die diesen Frameworks zugrunde liegen, werden in dieser Arbeit wissentlich nicht behandelt, um den Rahmen nicht zu sprengen.
+
+
+\section{Der Aufbau dieser Arbeit}
+\label{sec:AufbauDieserArbeit}
+
+\begin{description}
+
+	\item[Aktueller Wissensstand:] Der aktuelle Wissensstand beschreibt, auf welchem Wissensniveau sich der Autor im Moment der Aufnahme der Arbeit befand.
+	
+	\item[Entwicklungsstand TYPO3:] Dieses Kapitel befasst sich mit dem grunds\"atzlichen Entwicklungsstand von TYPO3 Version 4 und 5 und den mit der Extension-Entwicklung zusammenh\"angenden Frameworks Extbase, Fluid und FLOW3. Es werden grundlegende Eigenschaften der Frameworks und deren Leistungsf\"ahigkeit skizziert.
+	
+	\item[Methoden und Herangehensweisen:] Im Kapitel »Methoden und Herangehensweisen« werden die zur Planung verwendeten Methoden erl\"autert. Die grundlegenden Eigenschaften und der Aufbau des Softwareentwicklungsprozesses \FachbegriffSpezialA{Rup}{Rational Unified Process}{»Short for Rational Unified Process, a software development methodology from Rational. Based on UML, RUP organizes the development of software into four phases, each consisting of one or more executable iterations of the software at that stage of development.« \Zitat[Abs.\,1]{webopedia:Rup}}{RUP} werden erkl\"art. Zudem werden die anzufertigenden Dokumente spezifiziert.
+	
+	\item[Die Planung des Webradio-Players:] Dieses Kapitel umfasst die Dokumentation der gesamten Planungsphase des Webradio-Players. Hier wird eine \"Ubersicht \"uber die bereits vorhandene L\"osung geschaffen und anschlie{\ss}end die zur Planung erforderlichen Dokumente des RUP angefertigt.
+	
+	\item[Die Entwicklung des Webradio-Players:] Dieses Kapitel enth\"alt die Dokumentation der tats\"achlichen Programmierung der Software. Hier werden die Voraussetzungen zur Implementation gekl\"art und der Verlauf der Entwicklung anhand von Beispielen schrittweise abgearbeitet.
+	
+	\item[Fazit und kritische Bewertung:] Im Fazit werden die gemachten Erfahrungen und die Ergebnisse der Planung und Entwicklung abschlie{\ss}end zusammengefasst und kritisch bewertet. Zus\"atzlich wird ein kleiner Ausblick auf Erweiterungsm\"oglichkeiten und m\"ogliche Optimierungsschritte unternommen.
+
+\end{description}
+
+
+\section{Wenige Informationen, wenige Quellen \dots}
+\label{sec:Quellenlage}
+
+Grunds\"atzlich war es schwierig geeignete Quellen zu den Themen rund um die Technologien zu finden, da sich -- wie bereits erw\"ahnt -- beide Frameworks noch in der Entwicklung befinden. Aus diesem Grund wurde \"uberwiegend aus Online-Quellen zitiert.
+

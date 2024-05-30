@@ -1,0 +1,35 @@
+{
+	"nodes":[
+		{"id":"a4db18a90a3ff853","type":"file","file":"Ressourcen/Pictures/ÖPNV Barcelona_openstreetmap.png","x":-1680,"y":-1100,"width":1249,"height":565},
+		{"id":"5c63f614dd9ce00d","type":"file","file":"Ressourcen/Pictures/ÖPNV Stuttgart_openstreetmap.png","x":-369,"y":-1100,"width":1248,"height":565},
+		{"id":"43b6fc807a27ed8d","type":"text","text":"ÖPNV Barcelona","x":-1680,"y":-1240,"width":250,"height":60},
+		{"id":"ee56d7049d48b019","type":"text","text":"ÖPNV Stuttgart","x":-369,"y":-1240,"width":250,"height":60},
+		{"id":"67b200dc6028ac40","type":"link","url":"https://www.openstreetmap.de/karte/#","x":1080,"y":-1355,"width":1250,"height":820},
+		{"id":"bfacef0b6177a9a2","type":"text","text":"# FlowChart","x":-1680,"y":-440,"width":200,"height":60},
+		{"id":"c9d068896d6d701c","type":"text","text":"Terrain","x":-1380,"y":-440,"width":200,"height":60,"color":"5"},
+		{"id":"01a7a005139266d7","type":"text","text":"Streetnet","x":-1380,"y":-340,"width":200,"height":60,"color":"5"},
+		{"id":"8315662410408c94","type":"text","text":"Public Transport","x":-1380,"y":-240,"width":200,"height":60,"color":"5"},
+		{"id":"45475d0ddb0bacc9","type":"text","text":"City Centre","x":-1380,"y":-140,"width":200,"height":60,"color":"5"},
+		{"id":"439925ff3ab4d492","type":"text","text":"Industrial District","x":-1380,"y":-40,"width":200,"height":60,"color":"5"},
+		{"id":"a4c072a35e91cd62","type":"text","text":"residential buildings fill up","x":-1380,"y":60,"width":200,"height":60,"color":"5"},
+		{"id":"4a0317437501f7a1","type":"text","text":"replace residential for infrastructure buidlings","x":-1380,"y":160,"width":200,"height":80,"color":"5"},
+		{"id":"5403b1b57eae0521","type":"file","file":"Ressourcen/Pictures/Pasted image 20240422171226.png","x":-369,"y":-370,"width":400,"height":263},
+		{"id":"b7c844c3949ebbfd","type":"file","file":"Ressourcen/Pictures/Pasted image 20240422171240.png","x":42,"y":-370,"width":468,"height":260},
+		{"id":"c66976ddc125deb6","type":"text","text":"# Datenauswertung","x":-369,"y":-440,"width":369,"height":60},
+		{"id":"f53f5bde4fbb1376","type":"file","file":"Ressourcen/Pictures/Pasted image 20240422172926.png","x":-369,"y":-80,"width":399,"height":240},
+		{"id":"afef6422f8479cb2","type":"file","file":"Ressourcen/Pictures/Pasted image 20240422173335.png","x":42,"y":-80,"width":400,"height":240},
+		{"id":"0c8e59830b9e811d","type":"file","file":"Rules.md","x":-1120,"y":-438,"width":400,"height":698},
+		{"id":"8807594eb623e605","type":"file","file":"BA_wfc_gen_02.mp4","x":-909,"y":340,"width":740,"height":416},
+		{"id":"2a030b38ea418e1e","type":"file","file":"Pasted image 20240521140137.png","x":-1680,"y":820,"width":760,"height":424},
+		{"id":"0178ad18fb0bf3dc","type":"file","file":"Pasted image 20240521140247.png","x":-909,"y":820,"width":905,"height":424},
+		{"id":"e168b413661ec921","type":"file","file":"BA_wfc_gen_01 1.mp4","x":-1680,"y":340,"width":740,"height":416}
+	],
+	"edges":[
+		{"id":"199b789699323104","fromNode":"c9d068896d6d701c","fromSide":"bottom","toNode":"01a7a005139266d7","toSide":"top"},
+		{"id":"9511a337ae29155f","fromNode":"01a7a005139266d7","fromSide":"bottom","toNode":"8315662410408c94","toSide":"top"},
+		{"id":"bb118be78b3d66ae","fromNode":"8315662410408c94","fromSide":"bottom","toNode":"45475d0ddb0bacc9","toSide":"top"},
+		{"id":"7c860a0017c1323f","fromNode":"45475d0ddb0bacc9","fromSide":"bottom","toNode":"439925ff3ab4d492","toSide":"top"},
+		{"id":"a1caaa6db76b4a29","fromNode":"439925ff3ab4d492","fromSide":"bottom","toNode":"a4c072a35e91cd62","toSide":"top"},
+		{"id":"d53046f98c24df67","fromNode":"a4c072a35e91cd62","fromSide":"bottom","toNode":"4a0317437501f7a1","toSide":"top"}
+	]
+}
