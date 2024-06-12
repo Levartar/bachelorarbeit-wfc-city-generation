@@ -7,7 +7,9 @@ tiles = bpy.data.texts["generate_tiles_helpers.py"].as_module()
 r_wfc = bpy.data.texts["reverse_wfc.py"].as_module()
 
 
-size = 20
+size = 5
+highways = 2
+rivers = 2
 helpers.create_subd_plane(size)
 
 # Get the selected object (assuming it's a mesh)
@@ -23,4 +25,4 @@ helpers.triangulated_to_quad(obj)
 #tiles.generate_industrial_district(obj, size)
 #tiles.generate_houses(obj)
 #tiles.generate_parks(obj)
-r_wfc.reverse_wfc(obj)
+r_wfc.reverse_wfc(obj,size,highways,rivers)

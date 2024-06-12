@@ -25,7 +25,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Paper Ausschriebe.md",
+                "file": "Citation Paper/Procedural urban modeling of population, road network and land use.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5c4e4361d57702df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Gliederung vorläufig.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +105,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -159,7 +171,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Paper Ausschriebe.md",
+                "file": "Gliederung vorläufig.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +188,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Paper Ausschriebe.md",
+                "file": "Gliederung vorläufig.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -199,7 +211,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Paper Ausschriebe.md"
+                "file": "Gliederung vorläufig.md"
               }
             }
           }
@@ -220,9 +232,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c5952e880629137a",
+  "active": "5c4e4361d57702df",
   "lastOpenFiles": [
+    "Gespräche.md",
+    "Gliederung vorläufig.md",
     "Citation Paper/Procedural urban modeling of population, road network and land use.md",
+    "Citation Paper/Meine Bibliothek.bib",
+    "Ressourcen/Pictures/wfc_gumin.png",
+    "Citation Paper/Bibtex.bib",
+    "Citation Paper/Representing video game style with procedurally generated content.pdf",
     "Paper Ausschriebe.md",
     "Citation Paper/A Survey of Procedural Techniques for City Generation.md",
     "Citation Paper/Replacing car trips by increasing bike and public transport in the greater barcelona metro area.md",
@@ -232,7 +250,6 @@
     "Pasted image 20240521140247.png",
     "Pasted image 20240521140224.png",
     "Pasted image 20240521140137.png",
-    "Gespräche.md",
     "BA_wfc_gen_02.mp4",
     "BA_wfc_gen_01 1.mp4",
     "BA_wfc_gen_01.mp4",
@@ -249,10 +266,6 @@
     "Anmeldung_der_Abschlussarbeit_Wave Function Collapse for Procedural City..._MV.pdf",
     "Ressourcen/Pictures/ÖPNV Stuttgart_openstreetmap.png",
     "Ressourcen/Pictures/ÖPNV Barcelona_openstreetmap.png",
-    "Ressourcen/Pictures/Tiles.png",
-    "Data/Stadtliste.xlsx",
-    "Data",
-    "3d/City Tiles.blend1",
     "Arbeit/README.md",
     "Arbeit/LaTeX-Vorlage-Wissenschaftliche-Arbeit/README.md",
     "Getting started.md",

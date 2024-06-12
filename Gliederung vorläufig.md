@@ -1,0 +1,46 @@
+
+- Introduction
+	- aim of work
+		- motivation
+			- Aufwand minimieren
+			- datenbasiert arbeiten
+- Grundlagen - basics how does any of this work
+	- PCG 
+		- wofür wird es benutzt, 
+		- wer benutzt es, 
+		- beispiele
+		- Ziele von PCG
+		- Wie bewerten
+	- WFC
+		- how does it work
+		- what does it do
+- Related work
+	- PCG
+		- alternatives
+	- WFC
+		- alternatives
+		- helpful extentions
+	- City Generation
+		- alternatives useful, not useful
+- Method
+	- Main WFC Algorithm
+	- Extension to 3D Models
+	- Layered WFC
+	- Evaluationsmetriken
+- Implementation
+	- Techstack
+	- ablaufplan
+- Experiment
+	- Experiment Definition
+	- Results
+	- Discussion
+		- Good or Bad Results
+		- What do we see
+		- Limitations, how is this usable, calc time, optimization
+- Conclusion
+	- Future Work
+
+
+bibliography
+- ludography für spiele
+- Ansonsten Fußnote
