@@ -5,6 +5,7 @@ import time
 
 th = bpy.data.texts["generate_tiles_helpers.py"].as_module()
 rules = bpy.data.texts["rules.py"].as_module()
+eval = bpy.data.texts["wfc_eval.py"].as_module()
 
 pick_highest = True
 
@@ -77,19 +78,10 @@ def create_cube_at_certain(vert, color, vg_name = "undefined",cube_size=0.04):
         mat  = bpy.data.materials.get(vg_name)
     else:
         mat =  th.create_simple_mat(color,vg_name)
-
-    #create collection
-    #collection_name = "cubes"
-    #collection = bpy.data.collections.get(collection_name)
-    #if collection is None:
-    #collection = bpy.data.collections.new(collection_name)
-    #bpy.context.scene.collection.children.link(collection)
             
     #create cube
     bpy.ops.mesh.primitive_cube_add(size=cube_size, location=vert.co)
-    #add cube to collection
     cube_obj = bpy.context.active_object
-    #collection.objects.link(cube_obj)
     # set cube material
     bpy.context.object.data.materials.append(mat)
     print("placed cube ",vg_name," at ",vert.co)
@@ -140,27 +132,21 @@ def wfc_rest(unset_verts,mesh_object):
         # sleep is necessary to let the viewport render 
         bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
         
-def wfc_high(unset_verts,mesh_object):
-    lstart = len(unset_verts)
+def astar_fill(highw_indices,bm,unset_verts,mesh_object,type_name):
     
-    while len(unset_verts)>lstart-lstart*0.05:
-        unset_verts.ensure_lookup_table()
-        #replace: find next highway
-        vert, type_name, certainty = find_most_certain_vert(mesh_object,
-                                                 unset_verts)
-        color = propagate_certainties(mesh_object, 
-                                      vert,type_name,
-                                      unset_verts)
-        #remove vert from unset verts
-        print("vert.index: ",vert.index)
-        print("certainty: ",certainty)
-        create_cube_at_certain(vert, 
-                               color, type_name)
-        unset_verts.remove(vert)
+    for h_index in highw_indices:
+        vert = bm.verts[h_index]
+        rules.w_add(mesh_object,type_name,h_index,1)
+#        color = propagate_certainties(mesh_object, 
+#                                      vert,type_name,
+#                                      unset_verts)
+#        #remove vert from unset verts
+#        create_cube_at_certain(vert, 
+#                               color, type_name)
+                               
         # draw windows visualizes the creation process but takes a lot of time
         # sleep is necessary to let the viewport render 
-        #bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
-        #time.sleep(0.15)
+#        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
 
 
 def reverse_wfc(mesh_object:bpy.context.active_object,size,highways,rivers):
@@ -171,41 +157,47 @@ def reverse_wfc(mesh_object:bpy.context.active_object,size,highways,rivers):
     bm.from_mesh(mesh)
 
     init_vertex_groups(mesh_object, bm)
+    
+    #entropy evaluation
+    initial_weights = eval.get_vertex_group_weights(mesh_object)
+    initial_entropy = {vg: eval.calculate_entropy(weights) for vg, weights in initial_weights.items()}
+
 
     unset_verts = bm.verts
     unset_verts.ensure_lookup_table()
     # set random starting points
     except_verts = []
+    highways_indices_list = []
+    rivers_indices_list = []
     outer_verts = th.get_outer_verts(bm)
-    
+   
     for i in range(rivers):
-        unset_verts.ensure_lookup_table()
         river_start_v = th.get_random_vert_not_in(outer_verts, except_verts)
-        rules.propagate_river(mesh_object, river_start_v, unset_verts)
-        create_cube_at_certain(unset_verts[river_start_v.index], 
-                               (0.0,0.0,1.0), "river")
         except_verts.append(river_start_v)
-    
-    for i in range(highways):
-        unset_verts.ensure_lookup_table()
-        highw_start_v = th.get_random_vert_not_in(outer_verts, except_verts)
-        rules.propagate_highway(mesh_object, highw_start_v, unset_verts)
-        create_cube_at_certain(unset_verts[highw_start_v.index], 
-                               (0.0,0.0,0.0), "highway")
-        except_verts.append(highw_start_v)
-        #unset_verts.remove(highw_start_v)
+
+        river_end_v = th.get_random_vert_not_in(outer_verts, except_verts)
+        except_verts.append(river_end_v)
         
-        unset_verts.ensure_lookup_table()
+        rivers_indices_list += th.get_shortest_path(bm, river_start_v.index, river_end_v.index)
+#    
+    for i in range(highways):
+        highw_start_v = th.get_random_vert_not_in(outer_verts, except_verts)
+        except_verts.append(highw_start_v)
+        
         highw_end_v = th.find_closest_vertex_to_center(bm, 0.1)
-        rules.propagate_highway(mesh_object, highw_end_v, unset_verts)
-        create_cube_at_certain(unset_verts[highw_end_v.index], 
-                               (0.0,0.0,0.0), "highway")
         except_verts.append(highw_end_v)
-        #unset_verts.remove(highw_end_v)
-    print("unset verts:",unset_verts)
+        
+        highways_indices_list += th.get_shortest_path(bm, highw_start_v.index, highw_end_v.index)
     
     # WFCs go Here
+    astar_fill(highways_indices_list,bm,unset_verts,mesh_object,"highway")
+    astar_fill(rivers_indices_list,bm,unset_verts,mesh_object,"river")
+    
     wfc_rest(unset_verts,mesh_object)
+    
+    
+    #entropy evaluation
+    eval.evaluate_quality(mesh_object, initial_entropy)
 
     bm.free
     print("reverse wfc done")

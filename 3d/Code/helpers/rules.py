@@ -7,13 +7,13 @@ import math
 th = bpy.data.texts["generate_tiles_helpers.py"].as_module()
 
 #Global vars highest weight picked
-riv_chance = 0.5
-highway_chance = 0.5
+riv_chance = 0.2
+highway_chance = 0.5 #deprecated. replaced by highway amount
 road_chance = 0.5
 house_chance = 0.5
 industrial_chance = 0.5
 park_chance = 0.5
-randomness = 0.1
+randomness = 0
 
 #global vars weight based random
 #riv_chance = 1
@@ -24,6 +24,17 @@ randomness = 0.1
 #park_chance = 0
 #randomness = 0
 
+def set_rule_parameters(new_riv_chance=0.5, new_road_chance=0.5,
+                        new_house_chance=0.5, new_industrial_chance=0.5, new_park_chance=0.5, 
+                        new_randomness=0):
+    global riv_chance, highway_chance, road_chance, house_chance, industrial_chance, park_chance, randomness
+    riv_chance = new_riv_chance
+    road_chance = new_road_chance
+    house_chance = new_house_chance
+    industrial_chance = new_industrial_chance
+    park_chance = new_park_chance
+    randomness = new_randomness
+    
 def try_w(mesh_object,group_name,index):
     try:
         return mesh_object.vertex_groups[group_name].weight(index)
@@ -51,12 +62,12 @@ def propagate_river(mesh_object, vert, unset_verts):
     nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
     for v in nvs:
         w_add(mesh_object,"river",v.index,riv_chance*0.1)
-        w_add(mesh_object,"park",v.index,park_chance)
+        w_add(mesh_object,"park",v.index,park_chance*0.3)
         
     riv_vert = get_rand_neigh(vert,unset_verts)
     if riv_vert:
         i = riv_vert.index
-        w_add(mesh_object,"river",i,riv_chance)
+        w_add(mesh_object,"river",i,riv_chance*0.3)
     
 #    v2s = [vert for vert in th.get_neigbour2_verts(vert) if vert in unset_verts]   
 #    for g in mesh_object.vertex_groups:
@@ -64,19 +75,19 @@ def propagate_river(mesh_object, vert, unset_verts):
 #            w_add(mesh_object,g.name,v.index,0.05)
 
 def propagate_highway(mesh_object, vert, unset_verts):
-    nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
-    for v in nvs:
-        w_add(mesh_object,"highway",v.index,-highway_chance*0.1)
+#    nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
+#    for v in nvs:
+#        w_add(mesh_object,"highway",v.index,-highway_chance*0.1)
         
-    high_vert = get_rand_neigh(vert,unset_verts)
-    if high_vert:
-        i = high_vert.index
-        w_add(mesh_object,"highway",i,highway_chance)
+#    high_vert = get_rand_neigh(vert,unset_verts)
+#    if high_vert:
+#        i = high_vert.index
+#        w_add(mesh_object,"highway",i,highway_chance)
         
     road_vert = get_rand_neigh(vert,unset_verts)
     if road_vert:
         i = road_vert.index
-        w_add(mesh_object,"road",i,road_chance)
+        w_add(mesh_object,"road",i,road_chance*0.8)
 
 #    v2s = [vert for vert in th.get_neigbour2_verts(vert) if vert in unset_verts]
 #    for g in mesh_object.vertex_groups:
@@ -84,15 +95,19 @@ def propagate_highway(mesh_object, vert, unset_verts):
 #            w_add(mesh_object,g.name,v.index,0.2)
 
 def propagate_road(mesh_object, vert, unset_verts):
+    nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
+    for v in nvs:
+        w_add(mesh_object,"road",v.index,-road_chance*0.2)
+        
     road_vert = get_rand_neigh(vert,unset_verts)
     if road_vert:
         i = road_vert.index
-        w_add(mesh_object,"road",i,road_chance*0.8)
+        w_add(mesh_object,"road",i,road_chance)
         
     house_vert = get_rand_neigh(vert,unset_verts)
     if house_vert:
         i = house_vert.index
-        w_add(mesh_object,"house",i,house_chance-road_chance*0.5)
+        w_add(mesh_object,"house",i,house_chance)
     
     ind_vert = get_rand_neigh(vert,unset_verts)    
     if ind_vert:
@@ -104,13 +119,14 @@ def propagate_road(mesh_object, vert, unset_verts):
     for v in v2s:
         w_add(mesh_object,"house",v.index,house_chance*0.5)
         w_add(mesh_object,"highway",v.index,highway_chance*0.2)
-        w_add(mesh_object,"road",v.index,road_chance*0.1)
+        w_add(mesh_object,"road",v.index,road_chance*0.2)
 
 def propagate_house(mesh_object, vert, unset_verts):
      # add .5 to house types adjecant
     nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
     for v in nvs:
         w_add(mesh_object,"house",v.index,house_chance*0.5)
+        w_add(mesh_object,"road",v.index,road_chance*0.4)
         w_add(mesh_object,"park",v.index,park_chance)    
 
     # remove .2 to industrial types
@@ -122,7 +138,7 @@ def propagate_industrial(mesh_object, vert, unset_verts):
     # add industrial to types adjecant
     nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
     for v in nvs:
-        w_add(mesh_object,"industrial",v.index,industrial_chance)
+        w_add(mesh_object,"industrial",v.index,industrial_chance*1.5)
     # remove industrial from further types
     v2s = [vert for vert in th.get_neigbour2_verts(vert) if vert in unset_verts]
     for v in v2s:
@@ -133,8 +149,15 @@ def propagate_industrial(mesh_object, vert, unset_verts):
 
 def propagate_park(mesh_object, vert, unset_verts):
     # add .2 to parks types
-    v2s = [vert for vert in th.get_neigbour2_verts(vert) if vert in unset_verts]
-    for v in v2s:
-        w_add(mesh_object,"park",v.index,park_chance*0.3)
-        w_add(mesh_object,"river",v.index,riv_chance*0.1)
-        w_add(mesh_object,"road",v.index,road_chance*0.1)
+#    v2s = [vert for vert in th.get_neigbour2_verts(vert) if vert in unset_verts]
+#    for v in v2s:
+    park_vert = get_rand_neigh(vert,unset_verts)
+    if park_vert:
+        i = park_vert.index
+        w_add(mesh_object,"park",i,park_chance*0.3)
+        
+    nvs = [vert for vert in th.get_neigbour_verts(vert) if vert in unset_verts]
+    for v in nvs:
+        w_add(mesh_object,"park",v.index,park_chance*0.1)
+        #w_add(mesh_object,"river",v.index,riv_chance*0.1)
+        #w_add(mesh_object,"road",v.index,road_chance*0.1)

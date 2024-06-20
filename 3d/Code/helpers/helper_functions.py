@@ -119,13 +119,13 @@ def smooth_quads(mesh_object, iterations=1, strength=0.1):
     mesh.update()
     bm.free()
     
-def create_subd_plane(subdivisions = 5):
+def create_subd_plane(size = 5):
     # Create a new mesh object (plane)
-    bpy.ops.mesh.primitive_plane_add(size=subdivisions/5)
+    bpy.ops.mesh.primitive_plane_add(size=size/10)
 
     # Subdivide the plane without deforming it
     bpy.ops.object.mode_set(mode='EDIT')
-    bpy.ops.mesh.subdivide(number_cuts=subdivisions)
+    bpy.ops.mesh.subdivide(number_cuts=size-2)
     bpy.ops.object.mode_set(mode='OBJECT')
 
     # Select the plane

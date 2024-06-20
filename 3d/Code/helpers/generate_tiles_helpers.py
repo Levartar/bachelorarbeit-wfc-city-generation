@@ -1,6 +1,7 @@
 import random
 import bpy
 import bmesh
+import heapq
 from mathutils import Vector
 import math
 
@@ -178,11 +179,107 @@ def get_neigbour_verts(vert):
 
 def get_neigbour2_verts(vert):
     neighbour = []
-    for edges in vert.link_edges:
-        v2 = edges.other_vert(vert)
-        for e2 in v2.link_edges:
-            candidate = e2.other_vert(v2)
-            if candidate not in neighbour:
-                neighbour.append(e2.other_vert(v2))
-        neighbour.append(v2)
-    return neighbour       
+    try:
+        for edges in vert.link_edges:
+            v2 = edges.other_vert(vert)
+            for e2 in v2.link_edges:
+                candidate = e2.other_vert(v2)
+                if candidate not in neighbour:
+                    neighbour.append(e2.other_vert(v2))
+            neighbour.append(v2)
+    except AttributeError:
+        pass
+    return neighbour
+
+
+def get_random_vert_not_in(verts, notVerts):
+    if not verts:
+        raise ValueError("The vertex list is empty.")
+    
+    if len(verts) == 1 and verts[0] == v1:
+        raise ValueError("The only vertex in the list is equal to v1.")
+    
+    # Filter the list to exclude v1
+    filtered_verts = [v for v in verts if v not in notVerts]
+    
+    if not filtered_verts:
+        raise ValueError("No vertices available after excluding v1.")
+    
+    # Choose a random vertex from the filtered list
+    random_vert = random.choice(filtered_verts)
+    return random_vert
+
+def get_highest_weight_vertex_group_name(mesh_object, vert):
+    highest_weight = 0
+    highest_vg_name = None
+    
+    for group in mesh_object.vertex_groups:
+        vg_name = group.name
+        i = vert.index
+        try:
+            w = mesh_object.vertex_groups[vg_name].weight(i)
+            if w > highest_weight:
+                highest_weight = w
+                highest_vg_name = vg_name
+        except RuntimeError:
+            # vertex is not in the group
+                pass
+    return highest_vg_name
+
+#-------------A*-Code--------------------------------#
+def heuristic(v1, v2):
+    return (v1.co - v2.co).length
+
+def get_neighbors(vertex, bm):
+    neighbors = []
+    for edge in vertex.link_edges:
+        other_vert = edge.other_vert(vertex)
+        neighbors.append(other_vert)
+    return neighbors
+
+def reconstruct_path(came_from, current):
+    total_path = [current]
+    while current in came_from:
+        current = came_from[current]
+        total_path.append(current)
+    return total_path[::-1]
+
+def astar(bm, start, goal):
+    open_set = []
+    heapq.heappush(open_set, (0, start))
+    came_from = {}
+    g_score = {v: float('inf') for v in bm.verts}
+    g_score[start] = 0
+    f_score = {v: float('inf') for v in bm.verts}
+    f_score[start] = heuristic(start, goal)
+
+    while open_set:
+        _, current = heapq.heappop(open_set)
+        if current == goal:
+            return reconstruct_path(came_from, current)
+
+        for neighbor in get_neighbors(current, bm):
+            tentative_g_score = g_score[current] + (current.co - neighbor.co).length
+            if tentative_g_score < g_score[neighbor]:
+                came_from[neighbor] = current
+                g_score[neighbor] = tentative_g_score
+                f_score[neighbor] = g_score[neighbor] + heuristic(neighbor, goal)
+                if all(neighbor != item[1] for item in open_set):
+                    heapq.heappush(open_set, (f_score[neighbor], neighbor))
+    
+    return None
+
+def get_shortest_path(bm, start_index, goal_index):
+    
+    #bm.verts.ensure_lookup_table()
+    start = bm.verts[start_index]
+    goal = bm.verts[goal_index]
+
+    path = astar(bm, start, goal)
+    
+    if path is not None:
+        path_indices = [v.index for v in path]
+        return path_indices
+    else:
+        return None
+  
