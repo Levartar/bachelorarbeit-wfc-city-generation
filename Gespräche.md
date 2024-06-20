@@ -88,3 +88,14 @@ Hahn + Florian
 Themen:
 - WFC Algo verbessern? so behalten?
 - Noch keine Auswertung
+
+## 18.06.24
+Hahn + Florian
+
+Metrik:
+	-prozentuale Entropieveränderung
+	-standardabweichung
+Schreiben:
+	-to do list wie viel zeit für was
+	-arbeit und auswertung aufteilen
+	

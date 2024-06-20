@@ -63,10 +63,20 @@
               "state": {
                 "file": "Whiteboard.canvas",
                 "viewState": {
-                  "x": -737.7932630817693,
-                  "y": 564.8782322004288,
-                  "zoom": -0.9999999999999998
+                  "x": -497.69233528601166,
+                  "y": 2259.589479766694,
+                  "zoom": -0.6666666666666665
                 }
+              }
+            }
+          },
+          {
+            "id": "02cabbd03436ec27",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.3"
               }
             }
           },
@@ -93,19 +103,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "6cdfe067c9fada7e",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.5.12"
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -171,7 +171,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Gliederung vorläufig.md",
+                "file": "Whiteboard.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -188,7 +188,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Gliederung vorläufig.md",
+                "file": "Whiteboard.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -211,7 +211,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Gliederung vorläufig.md"
+                "file": "Whiteboard.canvas"
               }
             }
           }
@@ -232,9 +232,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5c4e4361d57702df",
+  "active": "02cabbd03436ec27",
   "lastOpenFiles": [
+    "Untitled.md",
+    "Whiteboard.canvas",
     "Gespräche.md",
+    "Time efficiency.md",
     "Gliederung vorläufig.md",
     "Citation Paper/Procedural urban modeling of population, road network and land use.md",
     "Citation Paper/Meine Bibliothek.bib",
@@ -244,9 +247,7 @@
     "Paper Ausschriebe.md",
     "Citation Paper/A Survey of Procedural Techniques for City Generation.md",
     "Citation Paper/Replacing car trips by increasing bike and public transport in the greater barcelona metro area.md",
-    "Time efficiency.md",
     "3d/City Tiles.blend@",
-    "Whiteboard.canvas",
     "Pasted image 20240521140247.png",
     "Pasted image 20240521140224.png",
     "Pasted image 20240521140137.png",
@@ -279,8 +280,6 @@
     "Markov Algorithm/MarkovJuniorWeb/node_modules/path-type/readme.md",
     "Markov Algorithm/MarkovJuniorWeb/node_modules/isobject/README.md",
     "Markov Algorithm/MarkovJuniorWeb/node_modules/hpack.js/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
-    "Markov Algorithm/MarkovJuniorWeb/node_modules/glsl-tokenizer/node_modules/isarray/README.md",
-    "Markov Algorithm/MarkovJuniorWeb/node_modules/define-properties/README.md",
-    "Markov Algorithm/MarkovJuniorWeb/node_modules/define-properties/CHANGELOG.md"
+    "Markov Algorithm/MarkovJuniorWeb/node_modules/glsl-tokenizer/node_modules/isarray/README.md"
   ]
 }
