@@ -98,4 +98,48 @@ Metrik:
 Schreiben:
 	-to do list wie viel zeit für was
 	-arbeit und auswertung aufteilen
-	
+
+## 09.07.24
+Hahn
+
+Master Bewerbung Gutachten 
+
+- Kolloquium 20-30min vortrag
+- 15 min fragen
+- 15 min Besprechung der prüfer
+- dauert 60min insgesamt
+
+## 16.07.24
+Flo
+
+Conclusion 
+- wie will ich die Problemfrage beantworten?
+- Spielkontext
+- PCG Content
+- Parameterkontrolliert - Ich kann content beinflussen
+- 
+Was mache ich mit KI generierten Texten
+
+Plots 
+- Confidence streuung entfernen
+- Labels in python entfernen
+- zu komplexe graphen in subfigures aufteilen
+- Fig 6.2, 6.3 nebeneinander
+- Fig 6.1 bar chart von 0-100 machen
+
+Bibliography 
+- Author, Jahr, Wo veröffentlicht
+- Keine Wikipedia zitierungen
+- Consistent Citations
+- Webseiten nur als Fußnote zitieren
+- auf listings, Figures, Tables direkt linken
+- 30-40 Citations needed
+
+Gutes bsp:
+Kim u. a. 2019b  
+Kim, Hwanhee ; Lee, Seongtaek ; Lee, Hyundong ; Hahn, Teasung ; Kang,  
+Shinjin: Automatic Generation of Game Content using a Graph-based Wave  
+Function Collapse Algorithm. In: 2019 IEEE Conference on Games (CoG),  
+2019, S. 1–4 4.1, 4.2
+
+

@@ -7,7 +7,7 @@ import math
 th = bpy.data.texts["generate_tiles_helpers.py"].as_module()
 
 #Global vars highest weight picked
-riv_chance = 0.2
+riv_chance = 0.5
 highway_chance = 0.5 #deprecated. replaced by highway amount
 road_chance = 0.5
 house_chance = 0.5

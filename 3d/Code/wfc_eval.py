@@ -6,6 +6,8 @@ import bmesh
 
 #Helpers
 th = bpy.data.texts["generate_tiles_helpers.py"].as_module()
+df_module = bpy.data.texts["dataframe.py"].as_module()
+rules = bpy.data.texts["rules.py"].as_module()
 
 # Berechnung der Entropie
 # Shannon-Entropie Eine hohe Entropie bedeutet hohe Unsicherheit oder hohe Unordnung. 
@@ -136,3 +138,74 @@ def evaluate_quality(mesh_object, initial_entropy):
     print("Overall Criteria Fulfilled Percentage: ", overall_criteria_fulfilled_percentage if overall_criteria_fulfilled_percentage == 'N/A' else f'{overall_criteria_fulfilled_percentage:.2f}%')
     
     bm.free
+    
+def evaluate_quality_dataframe(mesh_object, initial_entropy, params):
+    bm = bmesh.new()
+    bm.from_mesh(mesh_object.data)
+    
+    current_weights = get_vertex_group_weights(mesh_object)
+    current_highest_weights, vertex_count_per_type = get_highest_weights_per_vertex(mesh_object)
+    
+    current_entropy = {vg: calculate_entropy(weights) for vg, weights in current_weights.items()}
+    current_averages = {vg: np.mean(weights) for vg, weights in current_highest_weights.items()}
+    
+    total_vertices = len(mesh_object.data.vertices)
+    criteria_fulfilled_counts = defaultdict(int)
+    
+    # Initialisiere den DataFrame
+    df = df_module.create_dataframe()
+    
+    for vert in bm.verts:
+        vert_type = th.get_highest_weight_vertex_group_name(mesh_object, vert)
+        if check_criteria(mesh_object, vert, vert_type):
+            criteria_fulfilled_counts[vert_type] += 1
+    
+    total_criteria_fulfilled = sum(criteria_fulfilled_counts.values())
+    overall_criteria_fulfilled_percentage = (total_criteria_fulfilled / total_vertices) * 100 if total_vertices > 0 else 'N/A'
+    
+    for vg in current_entropy:
+        initial_ent = initial_entropy.get(vg, 'N/A')
+        current_ent = current_entropy[vg]
+        reduction_percentage = 0
+        if vg in initial_entropy and initial_ent != 'N/A':
+            if current_ent < initial_ent:
+                reduction_percentage = ((initial_ent - current_ent) / initial_ent) * 100
+        
+        vertex_count = vertex_count_per_type.get(vg, 0)
+        percentage = (vertex_count / total_vertices) * 100 if total_vertices > 0 else 'N/A'
+        
+        criteria_fulfilled_count = criteria_fulfilled_counts.get(vg, 0)
+        criteria_fulfilled_percentage = (criteria_fulfilled_count / vertex_count) * 100 if vertex_count > 0 else 'N/A'
+        
+        data = {
+            'Size': params['size'],
+            'Highways': params['highways'],
+            'Rivers': params['rivers'],
+            'River Chance': rules.riv_chance,
+            'Road Chance': rules.road_chance,
+            'House Chance': rules.house_chance,
+            'Industrial Chance': rules.industrial_chance,
+            'Park Chance': rules.park_chance,
+            'Randomness': rules.randomness,
+            'Vertex Group': vg,
+            'Initial Entropy': initial_ent,
+            'Current Entropy': current_ent,
+            'Entropy Reduction Percentage': reduction_percentage if reduction_percentage != 0 else 'N/A',
+            'Average Weight': current_averages.get(vg, 'N/A'),
+            'Vertex Count': vertex_count,
+            'Vertex Percentage': percentage if percentage != 'N/A' else 'N/A',
+            'Criteria Fulfilled Count': criteria_fulfilled_count,
+            'Criteria Fulfilled Percentage': criteria_fulfilled_percentage if criteria_fulfilled_percentage != 'N/A' else 'N/A'
+        }
+        
+        # Füge die Daten zum DataFrame hinzu
+        df = df_module.add_data_to_dataframe(df, data)
+    
+    print("Overall Criteria Fulfilled Percentage: ", overall_criteria_fulfilled_percentage if overall_criteria_fulfilled_percentage == 'N/A' else f'{overall_criteria_fulfilled_percentage:.2f}%')
+    
+    bm.free
+    
+    print(df)
+    # Speicher den DataFrame in eine CSV-Datei
+    filename = "city_generation_evaluation.csv"
+    df_module.save_dataframe_to_csv(df, filename)

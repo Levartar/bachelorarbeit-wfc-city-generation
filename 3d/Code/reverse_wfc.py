@@ -197,8 +197,12 @@ def reverse_wfc(mesh_object:bpy.context.active_object,size,highways,rivers):
     
     
     #entropy evaluation
-    eval.evaluate_quality(mesh_object, initial_entropy)
-
+    params = {
+        'size': size,
+        'highways': highways,
+        'rivers': rivers}
+    df = eval.evaluate_quality_dataframe(mesh_object, initial_entropy,params)
+    
     bm.free
     print("reverse wfc done")
 

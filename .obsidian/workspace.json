@@ -37,9 +37,29 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Gliederung vorläufig.md",
+                "file": "Gliederung ausarbeitung.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "d1b358ee03a1b985",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.5"
+              }
+            }
+          },
+          {
+            "id": "d4bc1cd00846f76a",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.3"
               }
             }
           },
@@ -61,22 +81,12 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Whiteboard.canvas",
+                "file": "Moodboard.canvas",
                 "viewState": {
-                  "x": -497.69233528601166,
-                  "y": 2259.589479766694,
-                  "zoom": -0.6666666666666665
+                  "x": 910,
+                  "y": 700,
+                  "zoom": -1.6580629916454246
                 }
-              }
-            }
-          },
-          {
-            "id": "02cabbd03436ec27",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.6.3"
               }
             }
           },
@@ -105,7 +115,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -171,7 +181,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Whiteboard.canvas",
+                "file": "Gliederung ausarbeitung.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -188,7 +198,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Whiteboard.canvas",
+                "file": "Gliederung ausarbeitung.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -211,7 +221,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Whiteboard.canvas"
+                "file": "Gliederung ausarbeitung.md"
               }
             }
           }
@@ -232,41 +242,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "02cabbd03436ec27",
+  "active": "5c4e4361d57702df",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Whiteboard.canvas",
+    "3d/city_render9.png",
+    "3d/city_render22_cube.png",
+    "3d/city_render21_cylinder.png",
+    "3d/city_render20_cylinder.png",
+    "3d/city_render19_torus.png",
+    "3d/city_render18.png",
+    "3d/city_render17.png",
+    "3d/city_render16.png",
+    "3d/city_render15.png",
+    "3d/city_render14.png",
+    "3d/city_render13.png",
     "Gespräche.md",
-    "Time efficiency.md",
-    "Gliederung vorläufig.md",
+    "Gliederung ausarbeitung.md",
+    "3d/city Tiles_v2.blend@",
     "Citation Paper/Procedural urban modeling of population, road network and land use.md",
-    "Citation Paper/Meine Bibliothek.bib",
-    "Ressourcen/Pictures/wfc_gumin.png",
-    "Citation Paper/Bibtex.bib",
-    "Citation Paper/Representing video game style with procedurally generated content.pdf",
+    "Data/Plots/data_image_png;base64,iVBORw0KGgoAAAANSUhEUgAAA0oAAAIhCAYAAABwnkrAAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy81sbWrAAAACXBIWXMAAA9hAAAPYQGoP6dpAABhxElEQVR4nO3deVyU5f7_8fcgMIDCuA8ugKjgvpXpUSusXHI9ZqVluVZW2mKe.url",
+    "Data/Plots",
+    "Data/Neuer Ordner",
+    "Data/Data_Plots.ipynb",
+    "Data/Untitled.ipynb",
+    "Data/~$CityGen_Data.xlsx",
+    "Data/96978100",
+    "Ressourcen/Pictures/iqg_expl.drawio",
+    "Citation Paper/WaveFunctionCollapse is Constraint Solving in the Wild.pdf",
+    "Moodboard.canvas",
+    "Whiteboard.canvas",
+    "Ressources.md",
+    "Rules.md",
+    "Time efficiency.md",
+    "Untitled.md",
     "Paper Ausschriebe.md",
     "Citation Paper/A Survey of Procedural Techniques for City Generation.md",
     "Citation Paper/Replacing car trips by increasing bike and public transport in the greater barcelona metro area.md",
-    "3d/City Tiles.blend@",
-    "Pasted image 20240521140247.png",
-    "Pasted image 20240521140224.png",
-    "Pasted image 20240521140137.png",
-    "BA_wfc_gen_02.mp4",
-    "BA_wfc_gen_01 1.mp4",
-    "BA_wfc_gen_01.mp4",
-    "Moodboard.canvas",
-    "Ressources.md",
-    "Data/~$Stadtliste.xlsx",
-    "Rules.md",
-    "3d/Code/helpers/generate_tiles_helpers.py",
-    "Ressourcen/Pictures/Pasted image 20240422173335.png",
-    "Ressourcen/Pictures/Pasted image 20240422172926.png",
-    "Ressourcen/Pictures/Pasted image 20240422171240.png",
-    "Ressourcen/Pictures/Pasted image 20240422171226.png",
     "Getting started - Ideen.md",
-    "Anmeldung_der_Abschlussarbeit_Wave Function Collapse for Procedural City..._MV.pdf",
-    "Ressourcen/Pictures/ÖPNV Stuttgart_openstreetmap.png",
-    "Ressourcen/Pictures/ÖPNV Barcelona_openstreetmap.png",
     "Arbeit/README.md",
     "Arbeit/LaTeX-Vorlage-Wissenschaftliche-Arbeit/README.md",
     "Getting started.md",
