@@ -15,4 +15,4 @@ This project demonstrates the use of the Wave Function Collapse (WFC) algorithm 
 
 Here’s a brief demo showcasing the city generation in action:
 
-[![City Generation Demo](https://imgur.com/a/Dt9cnLg)](https://imgur.com/a/Dt9cnLg)
+![City Generation Demo](https://imgur.com/a/Dt9cnLg)
